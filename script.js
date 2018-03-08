@@ -1,6 +1,7 @@
 // SVG Container
 var svgc = document.getElementById("one");
 
+<<<<<<< HEAD
 // Clear button
 var clearB = document.getElementById("clear");
 
@@ -49,6 +50,37 @@ var drawCircle = function (x, y) {
         }
     };
     c.setup();
+=======
+var drawCircle = function(x,y,e){
+    var n = 0;
+    var c = {
+	circle: document.createElementNS("http://www.w3.org/2000/svg", "circle"),
+	col: 0,
+	cx: function(){
+	    this.circle.setAttribute("cx",x)
+	},
+	cy: function(){
+	    this.circle.setAttribute("cy",y)
+	},
+	radius: function(){
+	    this.circle.setAttribute("r",10)
+	},
+	clear: function(e){
+	    svgc.removeChild(this.circle),
+	    drawCircle(Math.random()*490,Math.random()*490),
+	    e.stopPropagation()
+	},
+	color: function(e){
+	    this.setAttribute("fill","red"),
+	    c.circle.addEventListener("click",this.clear)
+	    e.stopPropagation()
+	},
+    };
+    c.cx();
+    c.cy();
+    c.circle.addEventListener("click", c.color);
+    c.radius();
+>>>>>>> b5f8d39a53264d9d35f6ce05f3f9f9b70640db70
     return c;
 };
 
@@ -62,7 +94,12 @@ var genRanColor = function () {
 var clicky = function (e) {
     mouseX = e.offsetX;
     mouseY = e.offsetY;
+<<<<<<< HEAD
     var c = drawCircle(mouseX, mouseY);
+=======
+    var c = drawCircle(mouseX,mouseY,e);
+    console.log(c.circle);
+>>>>>>> b5f8d39a53264d9d35f6ce05f3f9f9b70640db70
     svgc.appendChild(c.circle);
 };
 
