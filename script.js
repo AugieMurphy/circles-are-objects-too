@@ -26,6 +26,9 @@ var drawCircle = function (x, y) {
         black: function () {
             this.circle.setAttributeNS(null, "fill", "black");
         },
+        display: function () {
+            svgc.appendChild(this.circle);
+        },
         // Calls the above
         setup: function () {
             this.cx();
@@ -33,6 +36,7 @@ var drawCircle = function (x, y) {
             this.radius();
             this.black();
             this.circle.addEventListener('click', this.mods, true);
+            this.display();
         },
         // If the color is black, change color. Else remove and add a circle to a random location
         mods: function (e) {
@@ -63,7 +67,6 @@ var clicky = function (e) {
     mouseX = e.offsetX;
     mouseY = e.offsetY;
     var c = drawCircle(mouseX, mouseY);
-    svgc.appendChild(c.circle);
 };
 
 // Clear button callback function
